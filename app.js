@@ -3,10 +3,9 @@ const creds = require('./private_key.json');
 const lhData = require('./lighthouseApi');
 const gmtApi = require('./gtmApi');
 const wptApi = require('./webPageTestApi');
+const config = require('./config')
 
-const sheetId = '1ZdZyq-pq7f9U5xPFyOUBzdulWTpAAeyMn2gbCjVPAME';
-
-const doc = new GoogleSpreadsheet(sheetId);
+const doc = new GoogleSpreadsheet(config.sheetId);
 gmtApi.then(gtmData => {
     doc.useServiceAccountAuth(creds, function (authErr) {
         //Check authentication
