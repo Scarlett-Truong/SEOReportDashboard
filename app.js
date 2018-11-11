@@ -3,7 +3,12 @@ const creds = require('./private_key.json');
 const lhData = require('./lighthouseApi');
 const gmtApi = require('./gtmApi');
 const wptApi = require('./webPageTestApi');
-const config = require('./config')
+const config = require('./config');
+const fileHandler = require('./fileHandler');
+const getCurrentDate = require('./utils/getCurrentDate.js');
+
+const fileName = `${config.urlTest}_${getCurrentDate()[3]}.html`;
+const oldName = 'lighthouse.report.html';
 
 const doc = new GoogleSpreadsheet(config.sheetId);
 gmtApi.then(gtmData => {
@@ -102,3 +107,5 @@ wptApi.then( (wptData) => {
         })
     });
 })
+
+fileHandler(oldName,fileName,config.htmlFolderId);
