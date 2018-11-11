@@ -3,10 +3,11 @@ const {google} = require('googleapis');
 const drive = google.drive("v3");
 const key = require("./private_key.json");
 const path = require("path");
-const folderId = "1UUrk2kYU735RZxZakHaNJS1cMd9wEaJT";
+// const folderId = "1DyfpdXp_YezWs812m35MiFrmqoL379i8";
+const folderId = "1UUrk2kYU735RZxZakHaNJS1cMd9wEaJT"; //folder test
 const config = require('./config');
 const getCurrentDate = require('./utils/getCurrentDate');
-const fileName = `${config.urlTest}_${getCurrentDate()[3]}`;
+const fileName = `${config.urlTest}_${getCurrentDate()[3]}.html`;
 
 
 // if(fs.existsSync('lighthouse.report.html')) {
@@ -18,10 +19,10 @@ const fileName = `${config.urlTest}_${getCurrentDate()[3]}`;
 // }
 
 
-    fs.rename('lighthouse.report.html', fileName, function (err) {
-        if (err) throw err;
-        console.log('Renamed HTML file');
-    });
+fs.rename('lighthouse.report.html', fileName, function (err) {
+    if (err) throw err;
+    console.log('Renamed HTML file');
+});
 
 
 const jwToken = new google.auth.JWT(
@@ -35,9 +36,10 @@ jwToken.authorize((authErr) => {
         if (authErr) {
             console.log("error : " + authErr);
             return;
-        } else {
-            console.log("Authorization accorded");
-        }
+        } 
+        // else {
+        //     console.log("Authorization accorded");
+        // }
 });
 
 const fileMetadata = {
@@ -50,17 +52,17 @@ const media = {
 };
 
 
-    drive.files.create({
-        auth: jwToken,
-        resource: fileMetadata,
-        media: media,
-    }, function(err, res) {
-        if (err) {
-            console.error('Error uploading file: '+err);
-        } else {
-            console.log('File id: ' + res.data.id);
-        }
-    })
+drive.files.create({
+    auth: jwToken,
+    resource: fileMetadata,
+    media: media,
+}, function(err, res) {
+    if (err) {
+        console.error('Error uploading file: '+err);
+    } else {
+        console.log(`File id: ${res.data.id} - File name: ${fileName}`);
+    }
+})
 
 
 const updateFile = (id) => {

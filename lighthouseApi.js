@@ -1,7 +1,7 @@
-// import {getCurrentDate} from './utils/getCurrentDate';
 const getCurrentDate = require('./utils/getCurrentDate.js');
-
 const jsonData = require('./lighthouse.report.json');
+const config = require('./config');
+const fileName = `${config.urlTest}_${getCurrentDate()[3]}`;
 
 const lhData = {
     'Date': getCurrentDate()[0],
@@ -23,7 +23,7 @@ const lhData = {
     'LH-performance-speed-index-scale' : jsonData.audits['speed-index'].score,
     'LH-performance-tti-s' : (jsonData.audits.interactive.rawValue/1000), 
     'LH-performance-tti-scale' : jsonData.audits['interactive'].score,
-    'LH-html-file-name' : '',
+    'LH-html-file-name' : `https://jodywall.com/seo-reports/${fileName}`,
     'LH-link-name': 'Current Lighthouse Report',
     'LH-html-link': '',
     'LH-device':'Emulated Nexus 5X',
