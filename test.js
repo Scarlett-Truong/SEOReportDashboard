@@ -16,6 +16,12 @@ const getCurrentDate = () => {
     return arrDate;
 }
 
-console.log(getCurrentDate()[0]);
-console.log(getCurrentDate()[1]);
-console.log(getCurrentDate()[2]);
+// console.log(getCurrentDate()[0]);
+// console.log(getCurrentDate()[1]);
+// console.log(getCurrentDate()[2]);
+
+var initial_url = 'http://www.mymainsite.com/path/path/needthispath/somepath';
+var url = initial_url .split( '/' );
+
+// var updated_url= document.location.hostname + '/' + url[ url.length - 2 ] + '/' + url[ url.length - 1 ];
+console.log(url[2])
