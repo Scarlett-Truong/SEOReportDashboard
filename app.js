@@ -6,11 +6,13 @@ const wptApi = require('./webPageTestApi');
 const config = require('./config');
 const fileHandler = require('./fileHandler');
 const getCurrentDate = require('./utils/getCurrentDate.js');
+const getHtmlFileName = require('./utils/getHtmlFileName');
+// const url_split = config.urlTest.split( '/' );
 
-const url_split = config.urlTest.split( '/' );
-
-const fileName = `${url_split[2]}_${getCurrentDate()[3]}.html`;
+// const fileName = `${url_split[2]}_${getCurrentDate()[3]}.html`;
+const fileName = getHtmlFileName();
 const oldName = 'lighthouse.report.html';
+console.log(fileName);
 
 const doc = new GoogleSpreadsheet(config.sheetId);
 gmtApi.then(gtmData => {

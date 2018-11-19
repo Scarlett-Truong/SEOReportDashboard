@@ -1,12 +1,14 @@
 const getCurrentDate = require('./utils/getCurrentDate.js');
 const jsonData = require('./lighthouse.report.json');
-const config = require('./config');
-const fileName = `${config.urlTest}_${getCurrentDate()[3]}`;
+// const config = require('./config');
+// const fileName = `${config.urlTest}_${getCurrentDate()[3]}`;
+const getHtmlFileName = require('./utils/getHtmlFileName');
+const fileName = getHtmlFileName();
 
 const lhData = {
     'Date': getCurrentDate()[0],
     'Url': jsonData.finalUrl,
-    'Report-path':'',
+    'Report-path':`https://jodywall.com/seo-reports/${fileName}`,
     'Date-time': getCurrentDate()[2],
     'Month': getCurrentDate()[1],
     'LH-date-time': jsonData.fetchTime,
