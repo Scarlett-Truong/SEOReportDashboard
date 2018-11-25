@@ -3,7 +3,7 @@
 file='config.js'
 line=$(head -n 1 $file)
 urlTest=$(echo $line| cut -d'"' -f 2)
-echo $urlTest
+# echo $urlTest
 
 # while read line; do
 # echo $line
@@ -11,7 +11,11 @@ echo $urlTest
 # echo $urlTest
 # done < $file
 
-lhCli="lighthouse ${urlTest} --output json --output html --output-path ./lighthouse.json"
-appCli="node app.js"
-echo `$lhCli`
-echo `$appCli`
+# lhCli="lighthouse ${urlTest} --output json --output html --output-path ./lighthouse.json"
+# appCli="node app.js"
+# echo `$lhCli`
+# echo `$appCli`
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+    echo "Text read from file: $line"
+done < "$1"
