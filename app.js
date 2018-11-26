@@ -37,8 +37,8 @@ const writeGtmData = new Promise (  async () => {
             
             
             // Add Lighthouse, GTM data graph to sheet 2
-            const addRowPercent = new Promise ( async (resolve, reject) => {
-                await doc.addRow(2, { 
+            const addRowPercent = new Promise ( (resolve, reject) => {
+                doc.addRow(2, { 
                     'Date': lhData['Date'],
                     'Url': lhData['Url'],
                     'Date-time': getCurrentDate()[2],
@@ -55,7 +55,6 @@ const writeGtmData = new Promise (  async () => {
                 }, function(err) {
                     if(err) {
                         console.log('Error adding percent data in sheet 2: ' + err);
-                        reject(err);
                     }
                     else {
                         console.log('Succeed adding percent data in sheet 2')
@@ -63,8 +62,8 @@ const writeGtmData = new Promise (  async () => {
                 })
             });
     
-            const addRowRemain = new Promise ( async (resolve, reject) => {
-                await doc.addRow(2, { 
+            const addRowRemain = new Promise ( (resolve, reject) => {
+                doc.addRow(2, { 
                     'Date': lhData['Date'],
                     'Url': lhData['Url'],
                     'Date-time': getCurrentDate()[2],
@@ -81,14 +80,13 @@ const writeGtmData = new Promise (  async () => {
                 }, function(err) {
                     if(err) {
                         console.log('Error adding remaining data in sheet 2: ' + err);
-                        reject(err);
                     }
                     else {
                         console.log('Succeed adding remaining data in sheet 2')
                     }
                 })
             });
-            Promise.all([addRowPercent,addRowRemain]).catch(err => {console.log(err)})
+            Promise.all([addRowRemain,addRowPercent]).catch(err => {console.log(err)})
     
             //Add GTM data graph to sheet 3
             doc.addRow(3, 
@@ -138,8 +136,8 @@ const writeWptData = new Promise ( async () => {
     }
 });
 
-const writeHtmlFile = new Promise ( async () => {
-    await fileHandler(oldName,fileName,config.htmlFolderId);
+const writeHtmlFile = new Promise ( () => {
+    fileHandler(oldName,fileName,config.htmlFolderId);
 }, (err) => {console.log(`Error writing HTML : ${err}`)});
 
 Promise.all([writeWptData,writeGtmData,writeHtmlFile]).catch(err => console.log(err));

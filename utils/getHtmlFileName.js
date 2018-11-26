@@ -13,5 +13,5 @@ const getHtmlFileName = () => {
     return fileName;
 }
 
-// getHtmlFileName();
+// console.log(getHtmlFileName());
 module.exports = getHtmlFileName;
