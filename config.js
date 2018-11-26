@@ -1,4 +1,4 @@
-const urlTest = 'https://www.westcoastloghomes.com';
-const sheetId = '1xBXP-UBqODxbJ0OG7AV8j6CwQpDBQT1uT1Ac0XIIcBI';
-const htmlFolderId = '1EQpbEQNNxXEVVOzOryov26SaJsQDHIbP';
+const urlTest = 'https://www.novodentalcentre.com';
+const sheetId = '1ZdZyq-pq7f9U5xPFyOUBzdulWTpAAeyMn2gbCjVPAME';
+const htmlFolderId = '1DyfpdXp_YezWs812m35MiFrmqoL379i8';
 module.exports = {urlTest, sheetId, htmlFolderId};

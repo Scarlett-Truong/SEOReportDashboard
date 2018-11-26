@@ -28,7 +28,7 @@
 # echo "completed"
 
 # Create new file handle 5
-exec 5< test.txt
+exec 5< ad-hoc.txt
 # Now you can use "<&5" to read from this file
 while read line1 <&5 ; do
     read line2 <&5
