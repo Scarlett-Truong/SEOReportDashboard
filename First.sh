@@ -28,7 +28,7 @@
 # echo "completed"
 
 # Create new file handle 5
-exec 5< all-monthly-seo-api-report.txt
+exec 5< all.txt
 
 while read line1 <&5 ; do
     read line2 <&5
